@@ -12,8 +12,11 @@ export async function submitWholesaleForm(
   formData: FormData
 ): Promise<FormState> {
   const name = formData.get('name') as string
+  const company = formData.get('company') as string
   const email = formData.get('email') as string
   const phone = formData.get('phone') as string
+  const serviceType = formData.get('serviceType') as string
+  const storeLocation = formData.get('storeLocation') as string
   const businessName = formData.get('businessName') as string
   const businessType = formData.get('businessType') as string
   const message = formData.get('message') as string
@@ -34,15 +37,18 @@ export async function submitWholesaleForm(
 
   const mailOptions = {
     from: process.env.SMTP_USER,
-    to: 'amit@iscream-gelato.com',
+    to: 'inquiry@iscream-gelato.com',
     replyTo: email,
     subject: `Wholesale Inquiry from ${name} – ${businessName || 'New Partner'}`,
     html: `
       <h2>New Wholesale Partnership Inquiry</h2>
       <table style="border-collapse:collapse;width:100%;max-width:600px">
         <tr><td style="padding:8px;font-weight:bold;background:#f5f5f5">Name</td><td style="padding:8px">${name}</td></tr>
+        <tr><td style="padding:8px;font-weight:bold;background:#f5f5f5">Company</td><td style="padding:8px">${company || 'Not provided'}</td></tr>
         <tr><td style="padding:8px;font-weight:bold;background:#f5f5f5">Email</td><td style="padding:8px">${email}</td></tr>
         <tr><td style="padding:8px;font-weight:bold;background:#f5f5f5">Phone</td><td style="padding:8px">${phone || 'Not provided'}</td></tr>
+        <tr><td style="padding:8px;font-weight:bold;background:#f5f5f5">Service Type</td><td style="padding:8px">${serviceType || 'Not provided'}</td></tr>
+        <tr><td style="padding:8px;font-weight:bold;background:#f5f5f5">Store Location</td><td style="padding:8px">${storeLocation || 'Not provided'}</td></tr>
         <tr><td style="padding:8px;font-weight:bold;background:#f5f5f5">Business Name</td><td style="padding:8px">${businessName || 'Not provided'}</td></tr>
         <tr><td style="padding:8px;font-weight:bold;background:#f5f5f5">Business Type</td><td style="padding:8px">${businessType || 'Not provided'}</td></tr>
         <tr><td style="padding:8px;font-weight:bold;background:#f5f5f5">Message</td><td style="padding:8px">${message}</td></tr>

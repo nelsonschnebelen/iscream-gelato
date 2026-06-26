@@ -1,27 +1,75 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300;1,400&display=swap');
+
+@font-face {
+  font-family: 'Amalfi Coast';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url('/fonts/Amalfi-Coast.woff') format('woff');
+}
 
 :root {
-  --gelato-green: #8cb89f;
-  --gelato-green-dark: #6a9a82;
-  --gelato-green-light: #d4e8dd;
-  --gelato-cream: #faf8f4;
-  --gelato-text: #2d2d2d;
+  --color-primary: #FFE1DD;
+  --color-blush-bg: #FFEAE7;
+  --color-secondary: #D69F34;
+  --color-text: #777169;
+  --color-accent-green: #A3BEA7;
+  --color-accent-rose: #CDA8A0;
+  --color-white: #FFFFFF;
+  --font-lato: 'Lato', sans-serif;
+  --font-script: 'Amalfi Coast', cursive;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+* { box-sizing: border-box; }
 
 body {
   background: #ffffff;
-  color: var(--gelato-text);
-  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--color-text);
+  font-family: var(--font-lato);
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 2.3em;
+  letter-spacing: 0.03em;
+  margin: 0;
 }
 
-.gelato-green { color: #8cb89f; }
-.bg-gelato-green { background-color: #8cb89f; }
-.bg-gelato-cream { background-color: #faf8f4; }
-.border-gelato-green { border-color: #8cb89f; }
+h1, h2, h3, h4 {
+  font-family: var(--font-lato);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+.script {
+  font-family: var(--font-script);
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  color: var(--color-secondary);
+}
+
+.label-style {
+  font-family: var(--font-lato);
+  font-size: 0.7rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  color: var(--color-text);
+  line-height: 1em;
+}
+
+input, select, textarea {
+  font-family: var(--font-lato);
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: var(--color-text);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--color-text);
+  opacity: 0.5;
+}
