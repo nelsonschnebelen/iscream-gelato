@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 160" width="300" height="160">
+  <style>
+    text { fill: #8cb89f; font-family: 'Georgia', serif; letter-spacing: 0.15em; }
+    .top { font-size: 62px; font-weight: 900; text-anchor: middle; }
+    .bottom { font-size: 30px; font-weight: 700; text-anchor: middle; }
+    .deco { fill: none; stroke: #8cb89f; stroke-width: 2; }
+  </style>
+  <!-- I SCREAM -->
+  <text class="top" x="150" y="65">I SCREAM</text>
+  <!-- Decorative curves -->
+  <path class="deco" d="M 40 95 Q 70 80 105 95" />
+  <path class="deco" d="M 195 95 Q 230 80 260 95" />
+  <!-- GELATO -->
+  <text class="bottom" x="150" y="130">GELATO</text>
+</svg>
