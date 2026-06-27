@@ -5,88 +5,78 @@ import { submitWholesaleForm, FormState } from './actions'
 
 const initialState: FormState = {}
 
-const labelClass = "block mb-1 text-[0.65rem] uppercase tracking-[0.4em] font-normal"
-const inputClass = "w-full bg-transparent border-b border-[#c8b5b2] py-2 px-0 text-sm font-light tracking-wider outline-none focus:border-[#777169] transition-colors placeholder:text-[#777169]/50"
-const selectClass = "w-full bg-transparent border-b border-[#c8b5b2] py-2 px-0 text-sm font-light tracking-wider outline-none focus:border-[#777169] transition-colors appearance-none cursor-pointer"
+const label: React.CSSProperties = {
+  display: 'block',
+  fontSize: '0.6rem',
+  letterSpacing: '0.4em',
+  textTransform: 'uppercase',
+  color: '#777169',
+  marginBottom: 8,
+  fontWeight: 400,
+}
+
+const field: React.CSSProperties = {
+  width: '100%',
+  background: 'transparent',
+  border: 'none',
+  borderBottom: '1px solid #c8b5b2',
+  padding: '8px 0',
+  fontSize: '0.85rem',
+  fontWeight: 300,
+  letterSpacing: '0.05em',
+  color: '#777169',
+  outline: 'none',
+  fontFamily: "'Lato', sans-serif",
+}
 
 export default function WholesaleForm() {
   const [state, formAction, isPending] = useActionState(submitWholesaleForm, initialState)
 
   if (state.success) {
     return (
-      <div className="text-center py-16">
-        <p className="text-[0.65rem] uppercase tracking-[0.4em] mb-4" style={{ color: '#A3BEA7' }}>Thank You</p>
-        <h3 className="text-xl font-light uppercase tracking-[0.3em] mb-4" style={{ color: '#777169' }}>
-          We&apos;ll Be in Touch Soon
-        </h3>
-        <p className="text-sm font-light tracking-wide opacity-70">
-          Our team has received your wholesale inquiry and will reach out shortly.
+      <div style={{ textAlign: 'center', padding: '60px 0' }}>
+        <span style={{ display: 'block', fontSize: '0.6rem', letterSpacing: '0.4em', textTransform: 'uppercase', color: '#A3BEA7', marginBottom: 16 }}>Thank You</span>
+        <p style={{ fontSize: '0.9rem', fontWeight: 300, lineHeight: 2.2, color: '#777169', opacity: 0.8 }}>
+          We&apos;ve received your inquiry and will be in touch shortly.
         </p>
       </div>
     )
   }
 
   return (
-    <form action={formAction}>
+    <form action={formAction} style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+
       {/* Row 1 */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 mb-6">
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '32px 40px' }}>
         <div>
-          <label className={labelClass} style={{ color: '#777169' }}>Full Name *</label>
-          <input name="name" type="text" required className={inputClass} placeholder="Full Name" />
+          <label style={label}>Full Name *</label>
+          <input name="name" type="text" required style={field} placeholder="—" />
         </div>
         <div>
-          <label className={labelClass} style={{ color: '#777169' }}>Company Name</label>
-          <input name="company" type="text" className={inputClass} placeholder="Company Name" />
-        </div>
-        <div>
-          <label className={labelClass} style={{ color: '#777169' }}>Phone</label>
-          <input name="phone" type="tel" className={inputClass} placeholder="Phone" />
-        </div>
-        <div>
-          <label className={labelClass} style={{ color: '#777169' }}>Email *</label>
-          <input name="email" type="email" required className={inputClass} placeholder="Email" />
+          <label style={label}>Business Name</label>
+          <input name="company" type="text" style={field} placeholder="—" />
         </div>
       </div>
 
       {/* Row 2 */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 mb-6">
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '32px 40px' }}>
         <div>
-          <label className={labelClass} style={{ color: '#777169' }}>Service Type *</label>
-          <div className="relative">
-            <select name="serviceType" required className={selectClass}>
-              <option value="">Select service type</option>
-              <option>Gelato Cart (South Florida Only)</option>
-              <option>Catering Packed Popsicles</option>
-              <option>Full Venue Buyout</option>
-              <option>In Store Party</option>
-              <option>Wholesale Partnership</option>
-            </select>
-            <span className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 text-[#777169] opacity-60">▾</span>
-          </div>
+          <label style={label}>Email *</label>
+          <input name="email" type="email" required style={field} placeholder="—" />
         </div>
         <div>
-          <label className={labelClass} style={{ color: '#777169' }}>Store Location</label>
-          <div className="relative">
-            <select name="storeLocation" className={selectClass}>
-              <option value="">Select location</option>
-              <option>Miami Beach — Lincoln Rd, FL</option>
-              <option>Wynwood — Miami, FL</option>
-              <option>Las Olas — Fort Lauderdale, FL</option>
-              <option>Lone Tree, CO</option>
-              <option>Other / Multiple Locations</option>
-            </select>
-            <span className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 text-[#777169] opacity-60">▾</span>
-          </div>
+          <label style={label}>Phone</label>
+          <input name="phone" type="tel" style={field} placeholder="—" />
         </div>
+      </div>
+
+      {/* Row 3 */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '32px 40px' }}>
         <div>
-          <label className={labelClass} style={{ color: '#777169' }}>Business Name</label>
-          <input name="businessName" type="text" className={inputClass} placeholder="Business Name" />
-        </div>
-        <div>
-          <label className={labelClass} style={{ color: '#777169' }}>Type of Business</label>
-          <div className="relative">
-            <select name="businessType" className={selectClass}>
-              <option value="">Select type</option>
+          <label style={label}>Type of Business</label>
+          <div style={{ position: 'relative' }}>
+            <select name="businessType" style={{ ...field, appearance: 'none', paddingRight: 20, cursor: 'pointer' }}>
+              <option value="">Select…</option>
               <option>Restaurant</option>
               <option>Italian Restaurant</option>
               <option>Steakhouse / Fine Dining</option>
@@ -94,58 +84,76 @@ export default function WholesaleForm() {
               <option>Café / Coffee Shop</option>
               <option>Bakery / Dessert Shop</option>
               <option>Catering Company</option>
-              <option>Beach Club / Country Club / Private Club</option>
+              <option>Club / Private Venue</option>
               <option>Event Venue</option>
-              <option>Yacht / Boat Catering</option>
-              <option>Grocery Store / Specialty Market</option>
-              <option>Corporate Office / Coworking Space</option>
+              <option>Grocery / Specialty Market</option>
+              <option>Corporate Office</option>
               <option>School / University</option>
-              <option>Food Truck / Dessert Truck</option>
+              <option>Food Truck</option>
               <option>Other</option>
             </select>
-            <span className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 text-[#777169] opacity-60">▾</span>
+            <span style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', fontSize: 10, color: '#777169', opacity: 0.6, pointerEvents: 'none' }}>▾</span>
           </div>
+        </div>
+        <div>
+          <label style={label}>Location / City</label>
+          <input name="location" type="text" style={field} placeholder="—" />
         </div>
       </div>
 
       {/* Message */}
-      <div className="mb-8">
-        <label className={labelClass} style={{ color: '#777169' }}>Details About Your Inquiry *</label>
+      <div>
+        <label style={label}>Tell Us About Your Business *</label>
         <textarea
           name="message"
           required
           rows={4}
-          className={inputClass + " resize-none"}
-          placeholder="Tell us about your business and what you're looking for…"
+          style={{ ...field, resize: 'none', lineHeight: 2 }}
+          placeholder="Share any details about your establishment and what you're looking for…"
         />
       </div>
 
       {state.error && (
-        <p className="text-xs tracking-wider text-red-500 mb-4 opacity-80">{state.error}</p>
+        <p style={{ fontSize: '0.75rem', color: '#c0604a', letterSpacing: '0.05em', fontWeight: 300 }}>{state.error}</p>
       )}
 
       {/* Submit */}
       <button
         type="submit"
         disabled={isPending}
-        className="w-full py-4 text-white text-xs tracking-[0.4em] uppercase font-normal transition-opacity hover:opacity-80 disabled:opacity-50 cursor-pointer"
-        style={{ backgroundColor: '#CDA8A0' }}
+        style={{
+          width: '100%',
+          padding: '16px',
+          backgroundColor: '#CDA8A0',
+          color: '#fff',
+          border: 'none',
+          fontSize: '0.65rem',
+          letterSpacing: '0.4em',
+          textTransform: 'uppercase',
+          fontFamily: "'Lato', sans-serif",
+          fontWeight: 400,
+          cursor: isPending ? 'not-allowed' : 'pointer',
+          opacity: isPending ? 0.6 : 1,
+          transition: 'opacity 0.2s',
+        }}
       >
-        {isPending ? 'Sending…' : 'Request Wholesale Partnership'}
+        {isPending ? 'Sending…' : 'Submit Inquiry'}
       </button>
 
-      {/* Contact line */}
-      <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-[0.65rem] tracking-[0.3em] uppercase" style={{ color: '#777169' }}>
-        <a href="mailto:inquiry@iscream-gelato.com" className="hover:opacity-70 transition-opacity">
-          inquiry@iscream-gelato.com
-        </a>
-        <a href="tel:+17542736082" className="hover:opacity-70 transition-opacity">
-          +1 (754) 273-6082
-        </a>
-        <a href="https://iscream-gelato.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
-          iscream-gelato.com
-        </a>
+      {/* Contact */}
+      <div style={{ display: 'flex', gap: 32, justifyContent: 'center', flexWrap: 'wrap', paddingTop: 8, borderTop: '1px solid #e0ccc9' }}>
+        {[
+          { label: 'Email', href: 'mailto:inquiry@iscream-gelato.com', text: 'inquiry@iscream-gelato.com' },
+          { label: 'Phone', href: 'tel:+17542736082', text: '+1 (754) 273-6082' },
+          { label: 'Web', href: 'https://iscream-gelato.com', text: 'iscream-gelato.com' },
+        ].map((c) => (
+          <a key={c.label} href={c.href} target={c.label === 'Web' ? '_blank' : undefined} rel={c.label === 'Web' ? 'noopener noreferrer' : undefined}
+            style={{ fontSize: '0.6rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#777169', opacity: 0.7, textDecoration: 'none' }}>
+            {c.text}
+          </a>
+        ))}
       </div>
+
     </form>
   )
 }
