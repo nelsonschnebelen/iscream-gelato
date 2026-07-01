@@ -67,18 +67,6 @@ export default function WholesalePage() {
         </div>
       </section>
 
-      {/* HERO PHOTO — 3 cones against colorful tile */}
-      <div style={{ position: 'relative', width: '100%', height: 'clamp(320px, 55vw, 680px)', overflow: 'hidden' }}>
-        <Image
-          src="/images/gelato-cones-colorful.jpg"
-          alt="I Scream Gelato cones"
-          fill
-          style={{ objectFit: 'cover', objectPosition: 'center 30%' }}
-          sizes="100vw"
-          priority
-        />
-      </div>
-
       {/* WHY PARTNER */}
       <section id="why" style={{ backgroundColor: '#fff', padding: 'clamp(60px, 8vw, 100px) clamp(20px, 5vw, 60px)' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))', gap: 60, alignItems: 'start' }}>
